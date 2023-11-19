@@ -11,6 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTL.TVMazeScraper.Storage",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RTL.TVMazeScraper.Storage.Local", "RTL.TVMazeScraper.Storage.Local\RTL.TVMazeScraper.Storage.Local.csproj", "{B8405464-39D2-44DF-9014-7CDE35BD1CDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTL.TVMazeScraper.WorkerService.Tests", "RTL.TVMazeScraper.WorkerService.Tests\RTL.TVMazeScraper.WorkerService.Tests.csproj", "{D94C7B93-59EB-44E3-B4D1-C54C055155AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPad", "TestPad\TestPad.csproj", "{81319D49-A2FE-4500-B540-4EFC35D5A654}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTL.TVMazeScraper.Models", "RTL.TVMazeScraper.Models\RTL.TVMazeScraper.Models.csproj", "{B34FC042-578C-4E79-BA4F-0BE3DE58154E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTL.TVMazeScraper.StorageTests", "RTL.TVMazeScraper.StorageTests\RTL.TVMazeScraper.StorageTests.csproj", "{6E5F3537-A4F8-4CF7-BEAD-9760FACE853D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +41,22 @@ Global
 		{B8405464-39D2-44DF-9014-7CDE35BD1CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8405464-39D2-44DF-9014-7CDE35BD1CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8405464-39D2-44DF-9014-7CDE35BD1CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94C7B93-59EB-44E3-B4D1-C54C055155AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94C7B93-59EB-44E3-B4D1-C54C055155AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94C7B93-59EB-44E3-B4D1-C54C055155AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94C7B93-59EB-44E3-B4D1-C54C055155AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81319D49-A2FE-4500-B540-4EFC35D5A654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81319D49-A2FE-4500-B540-4EFC35D5A654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81319D49-A2FE-4500-B540-4EFC35D5A654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81319D49-A2FE-4500-B540-4EFC35D5A654}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34FC042-578C-4E79-BA4F-0BE3DE58154E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34FC042-578C-4E79-BA4F-0BE3DE58154E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34FC042-578C-4E79-BA4F-0BE3DE58154E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34FC042-578C-4E79-BA4F-0BE3DE58154E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E5F3537-A4F8-4CF7-BEAD-9760FACE853D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E5F3537-A4F8-4CF7-BEAD-9760FACE853D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E5F3537-A4F8-4CF7-BEAD-9760FACE853D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E5F3537-A4F8-4CF7-BEAD-9760FACE853D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
