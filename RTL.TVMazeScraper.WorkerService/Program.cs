@@ -7,9 +7,10 @@ IHost host = Host.CreateDefaultBuilder(args)
 
     .ConfigureServices(services =>
     {
-        services.AddHostedService<ShowScraperWorker>();
+        services.AddHostedService<WorkerService>();
         services.AddHttpClient<ITVMazeService, TvMazeService>().AddPolicyHandler(GetRetryPolicy());
         services.AddLocalStorage();
+        services.AddTransient<IShowScraper, ShowScraper>();
     })
     .Build();
 
