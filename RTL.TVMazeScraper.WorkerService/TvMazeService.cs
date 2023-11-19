@@ -6,8 +6,8 @@ namespace RTL.TVMazeScraper.WorkerService
 {
     public interface ITVMazeService
     {
-        Task<Show?> GetShowWithCast(ulong id, CancellationToken cancellationToken);
-        Task<IEnumerable<ulong>> GetUpdatedShows(DateTimeOffset? since, CancellationToken cancellationToken);
+        Task<Show?> GetShowWithCast(long id, CancellationToken cancellationToken);
+        Task<IEnumerable<long>> GetUpdatedShows(DateTimeOffset? since, CancellationToken cancellationToken);
     }
 
     public class TvMazeService : ITVMazeService
@@ -22,7 +22,7 @@ namespace RTL.TVMazeScraper.WorkerService
             _httpClient = httpClient;
             _httpClient.BaseAddress = new Uri(BaseUrl);
         }
-        public async Task<Show?> GetShowWithCast(ulong id, CancellationToken cancellationToken)
+        public async Task<Show?> GetShowWithCast(long id, CancellationToken cancellationToken)
         {
             var response = await _httpClient.GetAsync($"/shows/{id}?embed=cast", cancellationToken);
             response.EnsureSuccessStatusCode(); // todo add error handling besides the retry backoff policy
@@ -47,7 +47,7 @@ namespace RTL.TVMazeScraper.WorkerService
             };
         }
 
-        public async Task<IEnumerable<ulong>> GetUpdatedShows(DateTimeOffset? since,
+        public async Task<IEnumerable<long>> GetUpdatedShows(DateTimeOffset? since,
         CancellationToken cancellationToken)
         {
             var sinceQuery = string.Empty; // get all shows
@@ -69,8 +69,8 @@ namespace RTL.TVMazeScraper.WorkerService
 
             var response = await _httpClient.GetAsync($"updates/shows{sinceQuery}", cancellationToken);
             response.EnsureSuccessStatusCode();// todo add error handling besides the retry backoff policy
-            var updatedShows = await response.Content.ReadFromJsonAsync<Dictionary<ulong, int>>(_jsonSerializerOptions, cancellationToken);
-            return updatedShows?.Select(x => x.Key) ?? Enumerable.Empty<ulong>();
+            var updatedShows = await response.Content.ReadFromJsonAsync<Dictionary<long, int>>(_jsonSerializerOptions, cancellationToken);
+            return updatedShows?.Select(x => x.Key) ?? Enumerable.Empty<long>();
         }
     }
 }

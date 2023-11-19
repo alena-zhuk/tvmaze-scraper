@@ -5,7 +5,7 @@ namespace RTL.TVMazeScraper.WorkerService
 
     public class TvMazeShow
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
@@ -35,7 +35,7 @@ namespace RTL.TVMazeScraper.WorkerService
     }
     public class TvMazePerson
     {
-        public ulong Id { get; set; }
+        public long Id { get; set; }
         public string Url { get; set; }
         public string Name { get; set; }
         public Country Country { get; set; }
