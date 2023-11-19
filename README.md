@@ -19,7 +19,9 @@ all the cast that are playing in that TV show.
    
 ## Assumptions
 1. The Scraper API is public and requires no authentication nor authorization
-2. Actual information is crucial for the business, therefor Scraper has to run continiously and check for updates
+2. Actual information is crucial for the business, therefor Scraper has to run continiously and check for updates3. 
+3. Only fields like Show id, show name, Cast person id, cast person name and cast person birthday are required and only those have to be in the storage.
+4. It's important to scale up and out the API independently from the Scraper. Therefor the functionality is splitted on two different applications
 
 ## Restrictions
 1. TV Maze API calls are rate limited to allow at least 20 calls every 10 seconds per IP address.
