@@ -19,7 +19,7 @@ public class ShowScraperWorker : BackgroundService
         _tvMazeService = tvMazeService;
         _storage = storage;
     }
-      
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
@@ -56,10 +56,10 @@ public class ShowScraperWorker : BackgroundService
                     if (show != null)
                     {
                         // store in the storage
-                        await _storage.UpsertAsync(show, cancellationToken);
+                        await _storage.UpsertAsync(show.Id, show, cancellationToken);
                     }
                 }
-                catch (StorageException se) when(se.IsNonTransient)
+                catch (StorageException se) when (se.IsNonTransient)
                 {
                     throw;
                 }

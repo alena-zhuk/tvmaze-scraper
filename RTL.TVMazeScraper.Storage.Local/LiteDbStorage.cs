@@ -15,18 +15,33 @@ public class LiteDbStorage : IStorage
     }
     public async Task<IEnumerable<T>> Get<T>(int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
-        var collection = _db.GetCollection<T>();
-        return await collection.Query().Skip(pageSize * pageNumber).Limit(pageSize).ToListAsync();
+        try
+        {
+            var collection = _db.GetCollection<T>();
+            return await collection.Query().Skip(pageSize * pageNumber).Limit(pageSize).ToListAsync();
+
+        }
+        catch (DirectoryNotFoundException ex)
+        {
+            throw new StorageException("Bad Connection String", ex, true);
+        }
+        catch (LiteAsyncException ex)
+        {
+            throw new StorageException(ex.InnerException?.Message ?? ex.Message, ex, true);
+        }
+        catch (Exception exception)
+        {
+            throw new StorageException("Unable to execute the query", exception, false);
+        }
     }
 
-    public async Task<bool> UpsertAsync<T>(T entity, CancellationToken cancellationToken)
+    public async Task<bool> UpsertAsync<T>(object id, T entity, CancellationToken cancellationToken)
     {
         try
         {
             var collection = _db.GetCollection<T>();
 
-            // todo insert with id to prevent duplicates
-            return await collection.UpsertAsync(entity);
+            return await collection.UpsertAsync(new BsonValue(id), entity);
 
         }
         catch (DirectoryNotFoundException ex)
@@ -46,7 +61,7 @@ public class LiteDbStorage : IStorage
     private void ReleaseUnmanagedResources()
     {
         // todo: some bug with releasing lite db - throws an exception that CancellationTokenSource was disposed.
-        //_db.Dispose();
+        _db.Dispose();
     }
 
     public void Dispose()
