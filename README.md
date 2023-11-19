@@ -1,8 +1,10 @@
 # TV Maze Scraper
 Simple scraper of the TV Maze API to retrieve and store shows and cast data for future use. It consist of two applications:
 1. WorkerService - a background process which checks updates daily and downloads updated shows into the storage. On the first run it will download all entities.
-2. API - provides a set of endpoints to access the data in the storage
-Run both applications simultaniously. First scrape might take hours if you are unlucky with the cache on TVMaze side. However all downloaded data is available via API on the fly.
+2. API - provides a set of endpoints to access the data in the storage.
+
+   
+Run both applications simultaniously. First scrape might take prolonged time if you are unlucky with the cache on TVMaze side. However all downloaded data is available via API on the fly.
 
 
 ## Requirements
