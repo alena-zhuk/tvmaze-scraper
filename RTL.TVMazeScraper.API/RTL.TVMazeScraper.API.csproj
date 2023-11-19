@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\RTL.TVMazeScraper.Storage.Local\RTL.TVMazeScraper.Storage.Local.csproj" />
       <ProjectReference Include="..\RTL.TVMazeScraper.Storage\RTL.TVMazeScraper.Storage.csproj" />
     </ItemGroup>
 

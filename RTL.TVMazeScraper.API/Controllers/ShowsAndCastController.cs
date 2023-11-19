@@ -21,20 +21,24 @@ public class ShowsAndCastController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Show>> Get(int pageNumber = 0, int pageSize = PageSize, CancellationToken cancellationToken = default)
+    public async Task<ActionResult<IEnumerable<Show>>> Get([FromQuery] int pageNumber = 0, [FromQuery] int pageSize = PageSize, CancellationToken cancellationToken = default)
     {
-        var shows = await _storage.Get<Storage.Models.Show>(pageNumber, pageSize, cancellationToken);
-        return shows.Select(x => new Show
-        {
-            Id = x.Id,
-            Name = x.Name,
-            Cast = x.Cast.OrderBy(person => person.Birthday).Select(person => new Person
+        if (pageNumber < 0 || pageSize < 0)
+            return BadRequest();
+
+        var shows = await _storage.Get<RTL.TVMazeScraper.Models.Show>(pageNumber, pageSize, cancellationToken);
+        return new OkObjectResult(
+            shows.Select(x => new Show
             {
-                Id = person.Id,
-                Birthday = person.Birthday,
-                Name = person.Name
-            })
-        });
+                Id = x.Id,
+                Name = x.Name,
+                Cast = x.Cast.OrderByDescending(person => person.Birthday).Select(person => new Person
+                {
+                    Id = person.Id,
+                    Birthday = person.Birthday,
+                    Name = person.Name
+                })
+            }));
 
     }
 }

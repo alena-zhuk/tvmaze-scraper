@@ -1,5 +1,3 @@
-using RTL.TVMazeScraper.Storage.Models;
-
 namespace RTL.TVMazeScraper.API.Models;
 
 public class Show
